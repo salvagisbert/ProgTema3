@@ -29,8 +29,20 @@ Francia <- owid_covid_data[owid_covid_data$location == "France", ]
 EstadosUnidos <- owid_covid_data[owid_covid_data$location == "United States", ]
 Italia <- owid_covid_data[owid_covid_data$location == "Italy", ]
 ReinoUnido <- owid_covid_data[owid_covid_data$location == "United Kingdom", ]
-España <- owid_covid_data[owid_covid_data$location == "Spain", ]
+Espana <- owid_covid_data[owid_covid_data$location == "Spain", ]
 
 ```
 
+
+
+##Ponemos en marcha el gráfico
+
+Recogemos todas las variables en una para agilizar la construcción del gráfico
+```{r}
+library(ggplot2)
+paises <- owid_covid_data[owid_covid_data$location == 'United States' | owid_covid_data$location == 'Italy' | owid_covid_data$location == 'France' | owid_covid_data$location == 'Germany' | owid_covid_data$location == 'Canada' | owid_covid_data$location == 'Japan' | owid_covid_data$location == 'United Kingdom' | owid_covid_data$location == 'Spain', ]
+
+grafico <- ggplot(paises, aes(x = date, y = new_deaths_smoothed_per_million, colour = location)) + geom_line()
+grafico
+```
 
